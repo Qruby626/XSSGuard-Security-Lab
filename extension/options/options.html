@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSSGuard Extension Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <img src="../icons/icon-48.png" alt="XSSGuard" class="options-logo">
+      <div class="options-header-text">
+        <h1>XSSGuard Monitor Settings</h1>
+        <p class="subtitle">Connection settings for the passive monitoring interface and XSSGuard Security Dashboard navigation.</p>
+      </div>
+    </header>
+
+    <main class="options-main">
+      <form id="options-form" class="options-form">
+        <!-- Host Base URL -->
+        <div class="form-group">
+          <label for="host-url" class="form-label">Flask Host Base URL</label>
+          <input
+            type="url"
+            id="host-url"
+            name="hostUrl"
+            class="form-input"
+            placeholder="http://localhost:5000"
+            required
+          >
+          <span class="field-hint">Base HTTP URL of the local Flask server running XSSGuard. Used for passive tab telemetry and dashboard navigation. Default: <code>http://localhost:5000</code></span>
+        </div>
+
+        <!-- Dashboard Path -->
+        <div class="form-group">
+          <label for="dashboard-path" class="form-label">XSSGuard Dashboard Path</label>
+          <input
+            type="text"
+            id="dashboard-path"
+            name="dashboardPath"
+            class="form-input"
+            placeholder="/xssguard/"
+            required
+          >
+          <span class="field-hint">Route path where the XSSGuard server-side Security Dashboard blueprint is mounted. Used only for navigation. Default: <code>/xssguard/</code></span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="btn-save">Save Settings</button>
+          <button type="button" class="btn-secondary" id="btn-reset">Reset to Defaults</button>
+        </div>
+
+        <!-- Status Message -->
+        <div id="status-msg" class="status-msg" style="display: none;"></div>
+      </form>
+    </main>
+
+    <footer class="options-footer">
+      <p>XSSGuard Chrome Extension &bull; Manifest V3 &bull; Passive Monitoring Interface &bull; Non-Enforcing Client</p>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

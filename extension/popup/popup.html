@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSSGuard Security Monitor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <img src="../icons/icon-16.png" alt="XSSGuard" class="header-icon">
+        <span class="header-title">XSSGuard Monitor</span>
+      </div>
+      <button type="button" id="btn-options" class="btn-options-icon" title="Extension Settings">&#9881;</button>
+    </header>
+
+    <!-- Monitored Host Bar -->
+    <div class="host-bar">
+      <span class="host-label">Tab URL:</span>
+      <span class="host-url" id="tab-url">Reading active tab...</span>
+    </div>
+
+    <!-- Passive Telemetry Notice -->
+    <div class="telemetry-note">
+      <span class="telemetry-dot"></span>
+      <span>Passive monitoring of current tab</span>
+    </div>
+
+    <!-- Active Telemetry Container -->
+    <main class="main-content" id="main-content">
+      <!-- Status Overview Cards -->
+      <section class="status-grid">
+        <div class="status-card">
+          <div class="card-label">Content Security Policy</div>
+          <div class="badge-wrap">
+            <span class="status-badge badge-pending" id="badge-csp">Checking...</span>
+          </div>
+          <p class="card-helper">CSP header observed on page response</p>
+        </div>
+
+        <div class="status-card">
+          <div class="card-label">Trusted-Script Nonce</div>
+          <div class="badge-wrap">
+            <span class="status-badge badge-pending" id="badge-nonce">Checking...</span>
+          </div>
+          <p class="card-helper">Nonce token observed in script-src directive</p>
+        </div>
+      </section>
+
+      <!-- CSP Violation Feed -->
+      <section class="violations-section">
+        <div class="violations-header">
+          <span class="section-title">Observed CSP Violations</span>
+          <span class="count-badge" id="violation-count">0</span>
+        </div>
+        <p class="violations-subtitle">Native browser securitypolicyviolation events</p>
+        <div class="violations-container" id="violations-container">
+          <div class="empty-msg" id="empty-msg">No CSP violations observed on this tab.</div>
+          <ul class="violations-list" id="violations-list" style="display: none;"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Fallback / No Telemetry View -->
+    <div class="no-telemetry-box" id="no-telemetry-box" style="display: none;">
+      <div class="notice-icon">&#9432;</div>
+      <p class="notice-text" id="no-telemetry-msg">No CSP telemetry recorded for this tab.</p>
+      <p class="notice-hint">Navigate to a local host URL (e.g. <code>http://localhost:5000/</code>) protected by XSSGuard to view monitoring data.</p>
+    </div>
+
+    <!-- Footer Actions -->
+    <footer class="footer">
+      <button type="button" class="btn-dashboard" id="btn-open-dashboard">
+        Open Security Dashboard
+      </button>
+      <div class="footer-meta">Passive Monitoring &bull; Non-Enforcing Client</div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
