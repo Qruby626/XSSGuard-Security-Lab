@@ -8,6 +8,40 @@ XSSGuard adalah package Python framework-agnostic untuk mitigasi Stored XSS mela
 
 Desain mengikuti UML final dan menggunakan WSGI middleware sebagai titik integrasi.
 
+## Requirements
+
+- Python >= 3.9
+- Tidak ada dependensi wajib untuk core library
+
+### Optional Dependencies
+
+| Extra | Package | Keterangan |
+|-------|---------|------------|
+| `flask` | Flask >= 2.0 | Diperlukan untuk `XSSGuard` Flask extension dan Dashboard |
+| `dev` | pytest >= 7.0 | Diperlukan untuk menjalankan pengujian |
+
+## Installation
+
+### Dari source (development)
+
+```bash
+git clone https://github.com/Qruby626/XSSGuard-Security-Lab.git
+cd XSSGuard-Security-Lab
+pip install -e .
+```
+
+### Dengan dukungan Flask
+
+```bash
+pip install -e ".[flask]"
+```
+
+### Dengan dependensi pengembangan
+
+```bash
+pip install -e ".[flask,dev]"
+```
+
 ## 1. Arsitektur
 
 ```text
